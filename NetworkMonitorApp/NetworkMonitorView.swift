@@ -5,13 +5,18 @@ struct NetworkMonitorView: View {
   var body: some View {
     switch networkMonitor.status {
     case .satisfied:
-      Text("Satisfied")
-    case .unsatisfied:
-      Text("Unsatisfied")
-    case .requiresConnection:
-      Text("Requires Connection")
+      Label {
+        Text("Connected")
+      } icon: {
+        Image(systemName: "wifi")
+      }
+
     default:
-      Text("Unknown")
+      Label {
+        Text("Not Connected")
+      } icon: {
+        Image(systemName: "wifi.slash")
+      }
     }
   }
 }
